@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -39,3 +40,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 # interview_project
 Project for interview in Next.js and React.js
 >>>>>>> e5e255ad58be407125d9c8a0652eebcaeb18f77c
+=======
+# project_interview
+>>>>>>> 4ec43303fa9fd8162d0d7c175b4a9734c00a925c
