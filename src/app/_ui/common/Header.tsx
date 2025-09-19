@@ -11,8 +11,8 @@ export default function Header() {
     return (
         <div
             className={`
-                flex items-center justify-between p-4
-                bg-gray-900 text-white font-bold
+                flex items-center justify-between p-4 fixed w-full top-0 z-50
+                bg-gray-800 text-white font-bold
             `}
         >
             <h1>Admin Dashboard</h1>

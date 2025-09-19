@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <StoreProvider>
           <Header />
-          <main>
+          <main className="mt-[5%]">
             {children}
           </main>
         </StoreProvider>
