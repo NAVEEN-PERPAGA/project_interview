@@ -1,13 +1,14 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import { useAppSelector } from "@/app/reduxLib/hooks";
+import { useAppSelector, useAppDispatch } from "@/app/reduxLib/hooks";
 import { User } from "lucide-react";
+import { setUser } from "@/app/_features/userSlice";
 
 export default function Header() {
     const router = useRouter()
     const { user } = useAppSelector((state) => state.user)
-    console.log(user)
+    const dispatch = useAppDispatch()
     return (
         <div
             className={`
@@ -25,7 +26,10 @@ export default function Header() {
                                 <p>{user.username}</p>
                             </div>
                             <button
-                                onClick={() => router.push('/login')}
+                                onClick={() => {
+                                    router.push('/login')
+                                    dispatch(setUser({ username: '', password: '' }))
+                                } }
                             >
                                 Logout
                             </button>
