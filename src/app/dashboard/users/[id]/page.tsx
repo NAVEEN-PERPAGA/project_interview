@@ -11,7 +11,7 @@ export default async function UsersDetailsById({ params }: { params: { id: strin
         >
             <h1 className="text-2xl font-bold">User Details</h1>
 
-            <div className="flex flex-col gap-6 bg-gray-700 w-[50%] px-24 py-12 rounded-lg">
+            <div className="flex flex-col gap-6 bg-gray-700 w-[80%] px-24 py-12 rounded-lg">
                 <h2 className="text-4xl font-bold">{data.name}</h2>
                 <UserInfo field={data.email} label="Email" />
                 <UserInfo field={data.phone} label="Phone" />

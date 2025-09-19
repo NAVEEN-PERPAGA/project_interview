@@ -3,29 +3,39 @@ import { useAppDispatch } from "@/app/reduxLib/hooks"
 import { setUserSearchText, setFilteredUsers, setSelectedUser } from "@/app/_features/postsSlice"
 import { useAppSelector } from "@/app/reduxLib/hooks"
 import { User } from "@/app/_utils/types"
+import { useCallback, useRef } from "react"
 
 
 export function SearchByUser() {
     const dispatch = useAppDispatch()
     const { userSearchText, filteredUsers } = useAppSelector((state) => state.posts)
     const { allUsers } = useAppSelector((state) => state.user)
-    const handleUserSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.value === '') {
-            dispatch(setFilteredUsers([]))
-            dispatch(setUserSearchText(''))
-            dispatch(setSelectedUser(null))
-            return
-        }
-        if (allUsers.length) {
-            const filteredUsers = allUsers.filter(user => user.name.toLowerCase().includes(e.target.value.toLowerCase()))
-            dispatch(setFilteredUsers(filteredUsers))
-        }
-    }
+    const timerRef = useRef<NodeJS.Timeout | null>(null)
+
     const handleUserSelect = (user: User) => {
         dispatch(setSelectedUser(user))
         dispatch(setFilteredUsers([]))
         dispatch(setUserSearchText(user.name))
     }
+
+    // Debounce Function
+    const debouncedHandleUserSearch = useCallback((value: string) => {
+        if (timerRef.current) {
+            clearTimeout(timerRef.current)
+        }
+        if (value === '') {
+            dispatch(setFilteredUsers([]))
+            dispatch(setUserSearchText(''))
+            dispatch(setSelectedUser(null))
+            return
+        }
+        timerRef.current = setTimeout(() => {
+            if (allUsers.length) {
+                const filteredUsers = allUsers.filter(user => user.name.toLowerCase().includes(value.toLowerCase()))
+                dispatch(setFilteredUsers(filteredUsers))
+            }
+        }, 500)
+    }, [allUsers])
 
     return (
         <div>
@@ -35,7 +45,7 @@ export function SearchByUser() {
                 value={userSearchText}
                 onChange={(e) => {
                     dispatch(setUserSearchText(e.target.value))
-                    handleUserSearch(e)
+                    debouncedHandleUserSearch(e.target.value)
                 }}
             />
             {filteredUsers.length ?
