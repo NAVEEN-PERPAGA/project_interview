@@ -28,17 +28,9 @@ import {
 } from "@/components/ui/table"
 import { useRouter } from "next/navigation"
 
-export interface Item {
-    id: string
-    name: string
-    email: string
-    company: {
-        name: string
-    } | null
-    phone?: string
-}
+export type Item = User
 
-export const columns: ColumnDef<Item>[] = [
+export const columns: ColumnDef<User>[] = [
     // {
     //     id: "select",
     //     header: ({ table }) => (
@@ -118,7 +110,10 @@ export const columns: ColumnDef<Item>[] = [
                 </Button>
             )
         },
-        cell: ({ row }) => <div className="lowercase">{row.getValue("company")?.name}</div>,
+        cell: ({ row }) => {
+            const company = row.getValue("company") as { name: string } | null;
+            return <div className="lowercase">{company?.name || 'N/A'}</div>;
+        },
     },
 ]
 
