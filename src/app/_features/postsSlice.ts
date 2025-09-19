@@ -25,7 +25,7 @@ export const postsSlice = createAppSlice({
     name: 'posts',
     initialState,
     reducers: (create) => ({
-        setAllPosts: create.reducer((state, action: PayloadAction<any[]>) => {
+        setAllPosts: create.reducer((state, action: PayloadAction<Post[]>) => {
             state.allPosts = action.payload
         }),
         setSelectedPost: create.reducer((state, action: PayloadAction<Post>) => {

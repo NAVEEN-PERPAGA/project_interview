@@ -1,8 +1,10 @@
 import { useAppDispatch } from "@/app/reduxLib/hooks";
 import { setSelectedPost, setDialogOpen } from "@/app/_features/postsSlice";
 import { useAppSelector } from "@/app/reduxLib/hooks";
+import { Post } from "@/app/_utils/types";
 
-export default function PostCard({ post }: { post: any }) {
+
+export default function PostCard({ post }: { post: Post }) {
     const { userId, title, body: description } = post;
     const dispatch = useAppDispatch()
     const { allUsers } = useAppSelector((state) => state.user);

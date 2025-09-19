@@ -1,11 +1,11 @@
 import { createAppSlice } from "@/app/reduxLib/createAppSlice";
 import { PayloadAction } from "@reduxjs/toolkit";
-import type { User } from "@/app/_utils/types";
+import type { UserDetails } from "@/app/_utils/types";
 
 
 export interface SliceState {
     allUsers: any[];
-    user: User;
+    user: UserDetails;
 }
 
 const initialState: SliceState = {
@@ -20,7 +20,7 @@ export const userSlice = createAppSlice({
         setAllUsers: create.reducer((state, action: PayloadAction<any[]>) => {
             state.allUsers = action.payload
         }),
-        setUser: create.reducer((state, action: PayloadAction<User>) => {
+        setUser: create.reducer((state, action: PayloadAction<UserDetails>) => {
             state.user = action.payload
         })
     })

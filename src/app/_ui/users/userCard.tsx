@@ -1,4 +1,7 @@
-export default function UserCard({ user }: { user: any }) {
+import { User } from "@/app/_utils/types";
+
+
+export default function UserCard({ user }: { user: User }) {
     const { name, address: { city }, company: { name: companyName }, email, phone } = user;
     return (
         <div

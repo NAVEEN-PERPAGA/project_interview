@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { LucideIcon } from "lucide-react";
 
 
-export default function DashboardCard({ title, count, link, icon }: { title: string, count: number, link: string, icon: any }) {
+export default function DashboardCard({ title, count, link, icon }: { title: string, count: number, link: string, icon: LucideIcon }) {
     const Icon = icon;
     return (
         <Link

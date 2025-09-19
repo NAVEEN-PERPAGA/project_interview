@@ -14,7 +14,7 @@ import {
     VisibilityState,
 } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown } from "lucide-react"
-
+import { User } from "@/app/_utils/types"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
@@ -122,7 +122,7 @@ export const columns: ColumnDef<Item>[] = [
     },
 ]
 
-export function DataTable({ data }: { data: any }) {
+export function DataTable({ data }: { data: User[] }) {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
         []
@@ -155,7 +155,7 @@ export function DataTable({ data }: { data: any }) {
             },
         },
     })
-    
+
 
     return (
         <div className="w-full">
